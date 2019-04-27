@@ -1,11 +1,22 @@
-# Instructions
+# Example prediction code for Python for the PhysioNet/CinC Challenge 2019
 
-The Python script `get_sepsis_score.py` makes sepsis predictions on clinical time-series data.  The Python script `driver.py` is a helper script that loads the data, calls `get_sepsis_score.py`, and saves the predictions.
+## Contents
 
-Please add your prediction code to the function `get_sepsis_score` in the `get_sepsis_score.py` script.  Please do *not* change the `driver.py` script or the format of the inputs and outputs for the `get_sepsis_score` function -- or we will be unable to evaluate your submission.
+This prediction code uses two scripts:
 
-You can run your prediction code on a patient cohort by running
+* `get_sepsis_score.py` makes predictions on clinical time-series data.  Add your prediction code to the `get_sepsis_score` function.  To reduce your code's run time, add any code to the `load_sepsis_model` function that you only need to run once, such as loading weights for your model.
+* `driver.py` calls `load_sepsis_model` once and `get_sepsis_score` many times. It also performs all file input and output.  **Do not** edit this script -- or we will be unable to evaluate your submission.
 
-        python driver.py input_directory output_directory
+Check the code in these files for the input and output formats for the `load_sepsis_model` and `get_sepsis_score` functions.
 
-where `input_directory` contains input data files and `output_directory` contains output prediction files.  The input files are provided in a training database available on the PhysioNet website, and the format for the output files is described on the PhysioNet website.
+## Use
+
+You can run this prediction code by installing the NumPy package and running
+
+    python driver.py input_directory output_directory
+
+where `input_directory` is a directory for input data files and `output_directory` is a directory for output prediction files.  The PhysioNet/CinC 2019 webpage provides a training database with data files and a description of the contents and structure of these files.
+
+## Details
+
+See the PhysioNet/CinC 2019 webpage for more details, including instructions for the other files in this repository.
