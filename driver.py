@@ -40,10 +40,15 @@ if __name__ == '__main__':
         os.mkdir(output_directory)
 
     # Load model.
+    print('Loading sepsis model...')
     model = load_sepsis_model()
 
     # Iterate over files.
-    for f in files:
+    print('Predicting sepsis labels...')
+    num_files = len(files)
+    for i, f in enumerate(files):
+        print('    {}/{}...'.format(i+1, num_files))
+
         # Load data.
         input_file = os.path.join(input_directory, f)
         data = load_challenge_data(input_file)
@@ -61,3 +66,5 @@ if __name__ == '__main__':
         # Save results.
         output_file = os.path.join(output_directory, f)
         save_challenge_predictions(output_file, scores, labels)
+
+    print('Done.')
